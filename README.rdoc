@@ -15,3 +15,8 @@
 * adapter pattern for gh communication
 * service objects for updating issues from webhooks payload
 * decoraters for repo name, issue created on
+
+### TODO after all that other stuff:
+
+* use icons to show if an issue is open/closed
+* allow uses to filter issue index view by repo, by open/closed, by date opened, by assignee
