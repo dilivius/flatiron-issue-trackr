@@ -20,3 +20,10 @@
 
 * use icons to show if an issue is open/closed
 * allow uses to filter issue index view by repo, by open/closed, by date opened, by assignee
+
+### Notes
+
+* decorator pattern: 
+  * `repository.name.gsub("-", " ").titleize`: in `view/repositories/_repo.html.erb` and `views/issues/show.html.erb`
+  * `issue.opened_on`: in `views/issues/show.html.erb`
+  * `issue.assigneed`: in `views/issues/show.html.erb`
