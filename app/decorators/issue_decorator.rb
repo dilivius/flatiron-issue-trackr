@@ -4,6 +4,6 @@ class IssueDecorator < SimpleDelegator
   end
 
   def display_assignee
-    return "n/a" unless assignee
+    assignee ? assignee : "n/a"
   end
 end
