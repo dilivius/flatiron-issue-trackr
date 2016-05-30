@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:update]
 
   def show
-    @user = current_user
+    @user = UserDecorator.new(current_user)
   end
 
   def update
@@ -28,6 +28,6 @@ class UsersController < ApplicationController
     end
 
     def set_user
-      @user = User.find(params[:id])
+      @user = UserDecorator.new(User.find(params[:id]))
     end
 end

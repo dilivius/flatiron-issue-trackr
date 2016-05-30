@@ -16,10 +16,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def display_phone_number
-    !phone_number.empty? ? phone_number : "<i>add your phone number to receive text message updates</i>".html_safe if phone_number
-  end
-
   def normalize_phone_number
     if phone_number && phone_number.strip.empty?
       phone_number = nil 
