@@ -17,12 +17,15 @@ class IssueNotifier
 
   def send_text
     owner = issue.repository.user
-      if owner.phone_number
-        @client = Twilio::REST::Client.new(ENV['TWILIO_SID'], ENV['TWILIO_TOKEN'])
-        @client.messages.create(
-          to: owner.phone_number, 
-          from: "+1 #{ENV['TWILIO_NUMBER']}",
-           body: "#{issue.title} has been updated. View it here: #{issue.url}")
-      end
+    if owner.phone_number
+      Adapter::TwilioWrapper.new(issue).send_issue_update_text(owner)
+    end
+      # if owner.phone_number
+      #   @client = Twilio::REST::Client.new(ENV['TWILIO_SID'], ENV['TWILIO_TOKEN'])
+      #   @client.messages.create(
+      #     to: owner.phone_number, 
+      #     from: "+1 #{ENV['TWILIO_NUMBER']}",
+      #      body: "#{issue.title} has been updated. View it here: #{issue.url}")
+      # end
   end
 end

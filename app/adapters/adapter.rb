@@ -20,4 +20,21 @@ module Adapter
         {events: ['issues'], active: true})
     end
   end
+
+  class TwilioWrapper
+
+    attr_accessor :issue
+
+    def initialize(issue)
+      @client = Twilio::REST::Client.new(ENV['TWILIO_SID'], ENV['TWILIO_TOKEN']) 
+      @issue = issue
+    end
+
+    def send_issue_update_text(owner)
+      @client.messages.create(
+        to: owner.phone_number, 
+        from: "+1 #{ENV['TWILIO_NUMBER']}",
+        body: "#{issue.title} has been updated. View it here: #{issue.url}")
+    end
+  end
 end
