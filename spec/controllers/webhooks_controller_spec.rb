@@ -52,6 +52,16 @@ RSpec.describe WebhooksController, :type => :controller do
         expect(text_message.number).to eq("234567890")
       end
     end
+
+    context "benchmark" do 
+      it "should be fast" do 
+        VCR.use_cassette("create_repo") do 
+           Benchmark.realtime{
+          post :receive, @payload
+          }.should <= 0.01
+        end
+      end
+    end
   end
 end
 

@@ -29,5 +29,15 @@ RSpec.describe RepositoriesController, :type => :controller do
          expect(Issue.second.repository).to eq(repo)
        end
     end
+
+    context "benchmark" do 
+      it "should be fast" do 
+        VCR.use_cassette("create_repo") do 
+           Benchmark.realtime{
+          post :create, {repository: {url: "https://github.com/sophiedebenedetto/learn-write"}}
+          }.should <= 0.01
+        end
+      end
+    end
   end
 end
