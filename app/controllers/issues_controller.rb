@@ -6,6 +6,7 @@ class IssuesController < ApplicationController
 
   def show
     @issue = Issue.find(params[:id])
+    @repository = RepositoryDecorator.new(@issue.repository)
     if @issue.user == current_user
       render :show
     else
