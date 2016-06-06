@@ -67,6 +67,7 @@ GEM
       execjs
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.2)
+    connection_pool (2.2.0)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     database_cleaner (1.4.1)
@@ -171,6 +172,7 @@ GEM
     rake (11.1.2)
     rdoc (4.2.2)
       json (~> 1.4)
+    redis (3.3.0)
     rspec (3.2.0)
       rspec-core (~> 3.2.0)
       rspec-expectations (~> 3.2.0)
@@ -209,6 +211,10 @@ GEM
       rdoc (~> 4.0)
     selenium (0.2.11)
       jar_wrapper
+    sidekiq (4.1.2)
+      concurrent-ruby (~> 1.0)
+      connection_pool (~> 2.2, >= 2.2.0)
+      redis (~> 3.2, >= 3.2.1)
     slop (3.6.0)
     sms-spec (0.2.0)
       rspec (~> 3.1)
@@ -268,11 +274,13 @@ DEPENDENCIES
   puma
   rails (= 4.2.5.1)
   rails_12factor
+  redis
   rspec-rails
   ruby-prof
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   selenium
+  sidekiq
   sms-spec
   spring
   turbolinks

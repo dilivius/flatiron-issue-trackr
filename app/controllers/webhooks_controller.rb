@@ -9,7 +9,7 @@ class WebhooksController < ApplicationController
       return
     else
       issue = IssueUpdater.new(issue_params).update_from_payload
-      IssueNotifier.new(issue).execute
+      NotificationsJob.perform_now(issue)
       head :no_content
       return
     end

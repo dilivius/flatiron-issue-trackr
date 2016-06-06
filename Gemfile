@@ -38,6 +38,9 @@ group :production do
   gem 'rails_12factor'
 end
 
+gem 'redis'
+gem 'sidekiq'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
