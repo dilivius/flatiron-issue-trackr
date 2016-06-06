@@ -50,6 +50,7 @@ RSpec.describe WebhooksController, :type => :controller do
         expect(text_message.body).to eq("test issue 2 has been updated. View it here: https://github.com/SophieDeBenedetto/learn-write/issues/5")
         expect(text_message.from).to eq("+1 914-363-0827")
         expect(text_message.number).to eq("234567890")
+<<<<<<< HEAD
       end
     end
 
@@ -60,6 +61,8 @@ RSpec.describe WebhooksController, :type => :controller do
           post :receive, @payload
           }.should <= 0.01
         end
+=======
+>>>>>>> 7c2c07e48d18023a639ded932ad76615d68a82ff
       end
     end
   end
